@@ -7,4 +7,19 @@
 <h2>@ViewBag.Title.</h2>
 <h2>Product: @Model.Title.</h2>
 
-<p>Use this area to provide additional information.</p>
+<p>
+    <img alt="@Model.Title" src="@Model.ImageUrl" />
+</p>
+<div id="album-details">
+    <p>
+        <em>Genre:</em>
+        @Model.Title
+    </p>
+    <p>
+        <em>Price:</em>
+        @String.Format("{0:F}",Model.Price)
+    </p>
+    <p class="button">
+        @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ProductID }, "")
+    </p>
+</div>
