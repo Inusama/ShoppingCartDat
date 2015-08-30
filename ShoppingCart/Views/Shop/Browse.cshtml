@@ -1,0 +1,18 @@
+﻿@model ShoppingCart.Models.Category
+
+@{
+    ViewBag.Title = "Browse";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h2>Browsing Category: @Model.Title.</h2>
+
+<ul>
+    @foreach (var product in Model.Products)
+    {
+        <li>
+            @Html.ActionLink(product.Title, "Details", new { id = product.ProductID })
+        </li>
+    }
+</ul>
+

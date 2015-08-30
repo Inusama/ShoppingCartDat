@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using ShoppingCart.DAL;
+using ShoppingCart.Models;
+using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -12,6 +11,12 @@ namespace ShoppingCart
     {
         protected void Application_Start()
         {
+            var dbContext = new ShoppingCartContext();
+
+            Database.SetInitializer(new DataInitialization());
+
+            dbContext.Database.Initialize(true);
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
