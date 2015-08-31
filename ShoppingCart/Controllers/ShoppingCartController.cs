@@ -1,8 +1,6 @@
 ﻿using MvcMusicStore.ViewModels;
 using ShoppingCart.Models;
 using ShoppingCart.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,7 +9,6 @@ namespace ShoppingCart.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        ShoppingCartContext storeDB = new ShoppingCartContext();
 
         // GET: ShoppingCart
         public ActionResult Index()
@@ -29,22 +26,25 @@ namespace ShoppingCart.Controllers
             return View(viewModel);
         }
 
-        // GET: /Store/AddToCart/5
+        // GET: /ShoppingCart/AddToCart/5
         public ActionResult AddToCart(int id)
         {
+            ShoppingCart.Models.ShoppingCart shoppingCart = new ShoppingCart.Models.ShoppingCart();
+            var cart = shoppingCart.GetCart(HttpContext.Session.SessionID);
+
+            ShoppingCartContext storeDB = shoppingCart.getDB();
             // Retrieve the album from the database
             var addedItem = storeDB.Products.Single(p => p.ProductID == id);
 
             // Add it to the shopping cart
-            ShoppingCart.Models.ShoppingCart shoppingCart = new ShoppingCart.Models.ShoppingCart();
-            var cart = shoppingCart.GetCart(HttpContext.Session.SessionID);
+
 
             shoppingCart.AddToCart(addedItem);
 
             // Go back to the main store page for more shopping
             return RedirectToAction("Index");
         }
-        //
+
         // AJAX: /ShoppingCart/RemoveFromCart/5
         [HttpPost]
         public ActionResult RemoveFromCart(int id)
@@ -52,6 +52,7 @@ namespace ShoppingCart.Controllers
             // Remove the item from the cart
             ShoppingCart.Models.ShoppingCart shoppingCart = new ShoppingCart.Models.ShoppingCart();
             var cart = shoppingCart.GetCart(HttpContext.Session.SessionID);
+            ShoppingCartContext storeDB = shoppingCart.getDB();
 
             // Get the name of the album to display confirmation
             string produdctTitle = storeDB.CartItems.Single(i => i.ProductID == id).Product.Title;
