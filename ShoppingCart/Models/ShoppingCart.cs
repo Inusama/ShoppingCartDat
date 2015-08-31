@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 
 namespace ShoppingCart.Models
 {
@@ -38,10 +39,12 @@ namespace ShoppingCart.Models
             {
                 // If the item does exist in the cart, 
                 // then add one to the quantity
-                cartItem.Quantity++;
+                cartItem.Quantity += 1;
+                Debug.WriteLine(cartItem.Quantity);
             }
             // Save changes
             storeDB.SaveChanges();
+            Debug.WriteLine(storeDB.CartItems);
         }
 
         public int RemoveFromCart(int id)
