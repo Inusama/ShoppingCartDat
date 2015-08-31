@@ -11,6 +11,11 @@ namespace ShoppingCart.Models
 
         string cartSessionID { get; set; }
 
+        public ShoppingCartContext getDB()
+        {
+            return storeDB;
+        }
+
         public Cart GetCart(string sessionID)
         {
             Debug.WriteLine("Get cart: " + sessionID);
