@@ -107,6 +107,7 @@ D:\ShoppingCartDat\ShoppingCart\bin\Microsoft.Owin.Security.Twitter.xml
 D:\ShoppingCartDat\ShoppingCart\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\ShoppingCartDat\ShoppingCart\obj\Debug\ShoppingCart.dll
 D:\ShoppingCartDat\ShoppingCart\obj\Debug\ShoppingCart.pdb
+<<<<<<< HEAD
 D:\ShoppingCartDat\ShoppingCart\obj\Debug\ShoppingCart.csprojResolveAssemblyReference.cache
 C:\Users\trungnguyen\Desktop\ShoppingCartDat\ShoppingCart\bin\ShoppingCart.dll.config
 C:\Users\trungnguyen\Desktop\ShoppingCartDat\ShoppingCart\bin\ShoppingCart.dll
@@ -163,3 +164,5 @@ C:\Users\trungnguyen\Desktop\ShoppingCartDat\ShoppingCart\bin\Microsoft.Owin.Sec
 C:\Users\trungnguyen\Desktop\ShoppingCartDat\ShoppingCart\obj\Debug\ShoppingCart.csprojResolveAssemblyReference.cache
 C:\Users\trungnguyen\Desktop\ShoppingCartDat\ShoppingCart\obj\Debug\ShoppingCart.dll
 C:\Users\trungnguyen\Desktop\ShoppingCartDat\ShoppingCart\obj\Debug\ShoppingCart.pdb
+=======
+>>>>>>> master

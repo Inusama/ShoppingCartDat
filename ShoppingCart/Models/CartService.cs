@@ -5,7 +5,12 @@ namespace ShoppingCart.Models
 {
     public class CartService
     {
-        ShoppingCartContext storeDB = new ShoppingCartContext();
+        ShoppingCartContext storeDB;
+
+        public CartService(ShoppingCartContext storeDB)
+        {
+            this.storeDB = storeDB;
+        }
 
         public Cart GetBySessionID(string sessionID)
         {
