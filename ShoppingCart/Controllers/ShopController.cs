@@ -1,28 +1,33 @@
-﻿using System.Web;
+﻿using ShoppingCart.Models;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace ShoppingCart.Controllers
 {
     public class ShopController : Controller
     {
+        ShoppingCartContext storeDB = new ShoppingCartContext();
+
         // GET: Shop
-        public string Index()
+        public ActionResult Index()
         {
-            return "Hello from Shop.Index()";
+            var categories = storeDB.Categories.ToList();
+            return View(categories);
+
         }
 
         // GET: /Shop/Browse
-        public string Browse(string category)
+        public ActionResult Browse(string category)
         {
-            string message = HttpUtility.HtmlEncode("Shop.Browse, Category = " + category);
-            return message;
+            var categoryModel = storeDB.Categories.Include("Products").Single(g => g.Title == category);
+            return View(categoryModel);
         }
 
         // GET: /Shop/Details
-        public string Details(int id)
+        public ActionResult Details(int id)
         {
-            string message = "Shop.Details, ID = " + id;
-            return message;
+            var product = storeDB.Products.Find(id);
+            return View(product);
         }
     }
 }
