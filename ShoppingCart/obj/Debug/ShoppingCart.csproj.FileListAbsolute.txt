@@ -107,4 +107,3 @@ D:\ShoppingCartDat\ShoppingCart\bin\Microsoft.Owin.Security.Twitter.xml
 D:\ShoppingCartDat\ShoppingCart\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\ShoppingCartDat\ShoppingCart\obj\Debug\ShoppingCart.dll
 D:\ShoppingCartDat\ShoppingCart\obj\Debug\ShoppingCart.pdb
-D:\ShoppingCartDat\ShoppingCart\obj\Debug\ShoppingCart.csprojResolveAssemblyReference.cache

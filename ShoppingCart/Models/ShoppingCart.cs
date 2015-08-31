@@ -5,14 +5,15 @@ namespace ShoppingCart.Models
 {
     public class ShoppingCart
     {
-        ShoppingCartContext storeDB = new ShoppingCartContext();
+        static ShoppingCartContext storeDB = new ShoppingCartContext();
 
-        CartService cartService = new CartService();
+        CartService cartService = new CartService(storeDB);
 
         string cartSessionID { get; set; }
 
         public Cart GetCart(string sessionID)
         {
+            Debug.WriteLine("Get cart: " + sessionID);
             var cart = cartService.GetBySessionID(sessionID);
             cartSessionID = cart.SessionID;
             return cart;
@@ -23,6 +24,7 @@ namespace ShoppingCart.Models
             // Get the matching cart and album instances
             var cart = GetCart(cartSessionID);
             var cartItem = cart.CartItems.SingleOrDefault(i => i.ProductID == product.ProductID);
+            Debug.WriteLine("Add to cart: " + cartSessionID);
 
             if (cartItem == null)
             {
@@ -43,8 +45,9 @@ namespace ShoppingCart.Models
                 Debug.WriteLine(cartItem.Quantity);
             }
             // Save changes
+            Debug.WriteLine("Before : " + cartItem.Quantity);
             storeDB.SaveChanges();
-            Debug.WriteLine(storeDB.CartItems);
+            Debug.WriteLine("After " + cartItem.Quantity);
         }
 
         public int RemoveFromCart(int id)
